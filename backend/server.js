@@ -3,8 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path"); 
-const helmet = require('helmet'); // Security headers
-const morgan = require('morgan'); // HTTP request logging
 
 const authRoutes = require("./routes/auth");
 const apiRoutes = require("./routes/api");
@@ -12,9 +10,6 @@ const apiRoutes = require("./routes/api");
 const app = express();
 const PORT = process.env.PORT || 3000;  // Use the environment PORT, or fallback to 3000
 
-// Middleware
-app.use(helmet()); // Secure HTTP headers
-app.use(morgan('combined')); // Log HTTP requests
 
 // CORS configuration (restrict to allowed origins in production)
 const corsOptions = {
@@ -33,8 +28,6 @@ app.use("/api", apiRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'public')));
-
     // Handle unmatched routes in production
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
