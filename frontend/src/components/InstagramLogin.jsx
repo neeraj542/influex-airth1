@@ -3,7 +3,8 @@ import React from "react";
 const InstagramLogin = () => {
   const handleLogin = () => {
     // Redirect to backend endpoint for Instagram login
-    window.location.href = "http://localhost:3000/auth/login";
+    const baseURL = import.meta.env.VITE_APP_BASE_URL;
+    window.location.href = `${baseURL}/auth/instagram`;
   };
 
   return (
