@@ -2,18 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const path = require("path"); 
-
+const path = require("path");
 const authRoutes = require("./routes/auth");
 const apiRoutes = require("./routes/api");
 
 const app = express();
-const PORT = process.env.PORT || 3000;  // Use the environment PORT, or fallback to 3000
 
+const PORT = process.env.PORT || 3000;  // Use the environment PORT, or fallback to 3000
 
 // CORS configuration (restrict to allowed origins in production)
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'https://influex-airth1.vercel.app', // Replace with your frontend URL
+  origin: process.env.CORS_ORIGIN || 'https://influex-airth1.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };

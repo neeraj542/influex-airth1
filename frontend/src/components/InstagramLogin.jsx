@@ -4,7 +4,7 @@ const InstagramLogin = () => {
   const handleLogin = () => {
     // Redirect to backend endpoint for Instagram login
     const baseURL = import.meta.env.VITE_APP_BASE_URL;
-    window.location.href = `${baseURL}/auth/instagram`;
+    window.location.href = `${baseURL}/auth/login`;
   };
 
   return (
