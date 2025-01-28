@@ -18,7 +18,7 @@ app.use(morgan('combined')); // Log HTTP requests
 
 // CORS configuration (restrict to allowed origins in production)
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'https://your-frontend-domain.com', // Replace with your frontend URL
+  origin: process.env.CORS_ORIGIN || 'https://influex-airth1.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
