@@ -2,12 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const path = require("path"); 
+const path = require("path");
 const authRoutes = require("./routes/auth");
 const apiRoutes = require("./routes/api");
 
 const app = express();
-const PORT = process.env.PORT || 3000; 
+
+const PORT = process.env.PORT || 3000;  // Use the environment PORT, or fallback to 3000
 
 // CORS configuration (restrict to allowed origins in production)
 const corsOptions = {
@@ -26,9 +27,10 @@ app.use("/api", apiRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-  });
+    // Handle unmatched routes in production
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    });
 }
 
 // Root route handler
